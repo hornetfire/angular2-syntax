@@ -2,6 +2,26 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'my-app',
-    template: '<h1>My First Angular 2 App</h1>'
+    templateUrl: 'src/app/app.component.html'
 })
-export class AppComponent { }
+export class AppComponent {
+    firstName: string = 'Hudson Graham';
+    item: string = '';
+    items: string[] = [];
+    link: string = 'http://angular.io';
+
+    person: any = null;
+    addPerson() {
+        this.person = {}
+        this.person.alias = 'Secret Alias';
+    }
+
+    isPrimary: boolean = false;
+    activate() {
+        this.isPrimary = !this.isPrimary;
+    }
+
+    addItem(item: string) {
+        this.items.push(item);
+    }
+}

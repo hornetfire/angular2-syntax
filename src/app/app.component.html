@@ -1,0 +1,211 @@
+<div class="container">
+
+  <div class="well">
+    <h4>Interpolation</h4>
+    <div class="well">
+      <p ngNonBindable>{{firstName}}</p>
+    </div>
+    <div>
+      <p>First Name: {{firstName}}</p>
+    </div>
+  </div>
+
+  <div class="well">
+    <h4>One way binding</h4>
+    <div class="well">
+      <![CDATA[
+        <input [value]="firstName">
+      ]]>
+    </div>
+    <div>
+      <input class="form-control" [value]="firstName">
+    </div>
+    <div>
+      <p>First Name: {{firstName}}</p>
+    </div>
+  </div>
+
+  <div class="well">
+    <h4>Event Binding</h4>
+    <div class="well">
+      <![CDATA[
+        <button (click)="addItem(enteredItem)" class="btn btn-default">Add</button>
+      ]]>
+    </div>
+    <div class="input-group">
+      <input class="form-control" [(ngModel)]="enteredItem" />
+      <span class="input-group-btn">
+        <button (click)="addItem(enteredItem)" class="btn btn-default">Add</button>
+      </span>
+    </div>
+    <div>
+      <p *ngFor="let item of items">{{item}}</p>
+    </div>
+  </div>
+
+  <div class="well">
+    <h4>Two way binding without ngModel</h4>
+    <div class="well">
+      <![CDATA[
+          <input [value]="firstName" (input)="firstName = $event.target.value">
+      ]]>
+    </div>
+    <div>
+      <input class="form-control" [value]="firstName" (input)="firstName = $event.target.value">
+    </div>
+    <div>
+      <p>First Name: {{firstName}}</p>
+    </div>
+  </div>
+
+  <div class="well">
+    <h4>Two way binding with NgModel</h4>
+    <div class="well">
+      <![CDATA[
+          <input [(ngModel)]="firstName">
+      ]]>
+    </div>
+    <div>
+      <input class="form-control" [(ngModel)]="firstName">
+    </div>
+    <div>
+      <p>First Name: {{firstName}}</p>
+    </div>
+  </div>
+
+  <div class="well">
+    <h4>Property Binding</h4>
+    <div class="well">
+      <![CDATA[
+          <a [href]="link">{{link}}</a>
+      ]]>
+    </div>
+    <div>
+      <a [href]="link">{{link}}</a>
+    </div>
+  </div>
+
+  <div class="well">
+    <h4>Structural Directives - NgFor</h4>
+    <div class="well" ngNonBindable>
+      <![CDATA[
+        <p *ngFor="let item of items">{{item}}</p>
+     ]]>
+    </div>
+    <div class="input-group">
+      <input class="form-control" [(ngModel)]="enteredItem" />
+      <span class="input-group-btn">
+                 <button (click)="addItem(enteredItem)" class="btn btn-default">Add</button>
+             </span>
+    </div>
+    <div>
+      <p *ngFor="let item of items">{{item}}</p>
+    </div>
+  </div>
+
+  <div class="well">
+    <h4>Structural Directives - NgIf</h4>
+    <div class="well">
+      <![CDATA[
+        <p *ngIf="firstName.length > 3">Input text is > 3!</p>
+      ]]>
+    </div>
+    <div>
+      <input class="form-control" [(ngModel)]="firstName">
+    </div>
+    <div>
+      <p *ngIf="firstName.length > 3">Input text is > 3!</p>
+    </div>
+  </div>
+
+  <div class="well">
+    <h4>Hidden property binding</h4>
+    <div class="well">
+      <![CDATA[
+        <p [hidden]="hidden.length < 4">Input text is > 3!</p>
+      ]]>
+    </div>
+    <div>
+      <input class="form-control" [(ngModel)]="firstName">
+    </div>
+    <div>
+      <p [hidden]="firstName.length < 4">Input text is > 3!</p>
+    </div>
+  </div>
+
+  <!--Question:ngSwitchWhen is now ngSwitchCase http://stackoverflow.com/questions/35777062/how-does-ngswitch-work-in-angular2/40415370#40415370'-->
+  <div class="well">
+    <h4>Structural Directives - NgSwitch</h4>
+    <div class="well" ngNonBindable>
+      <![CDATA[
+        <span [ngSwitch]="firstName">
+          <span *ngSwitchWhen="'John Doe'">John Doe Entered</span>
+          <span *ngSwitchDefault>John Doe was not entered </span>
+        </span>
+      ]]>
+    </div>
+    <div>
+      <input class="form-control" [(ngModel)]="firstName">
+    </div>
+    <div>
+      <span [ngSwitch]="firstName">
+      <span *ngSwitchCase="'John Doe'">John Doe entered</span>
+      <span *ngSwitchDefault>John Doe is not entered </span>
+      </span>
+    </div>
+  </div>
+
+  <div class="well">
+    <h4>NgClass</h4>
+    <div class="well">
+      <![CDATA[
+        [ngClass]="isPrimary ? 'btn-primary' : 'btn-default'"
+      ]]>
+    </div>
+    <div>
+      <button (click)="activate()" class="btn" [ngClass]="isPrimary ? 'btn-primary' : 'btn-default'">Activate button class</button>
+    </div>
+  </div>
+
+  <div class="well">
+    <h4>NgStyle</h4>
+    <div class="well">
+      <![CDATA[
+        <p [style.backgroundColor]="isPrimary ? 'blue' : 'red'">Back ground color to be styled</p>
+      ]]>
+    </div>
+    <div>
+      <button (click)="activate()" class="btn btn-default">Activate button style</button>
+      <p [style.backgroundColor]="isPrimary ? 'blue' : 'red'">Back ground color to be styled</p>
+    </div>
+  </div>
+
+  <div class="well">
+    <h4>The safe navigation operator ( ?. )</h4>
+    <div class="well">
+      <p ngNonBindable>Alias: {{person?.alias}}</p>
+    </div>
+    <div>
+      <button class="btn btn-default" (click)="addPerson()">Add person object</button>
+    </div>
+    <div>
+      <p>Alias: {{person?.alias}}</p>
+    </div>
+  </div>
+
+  <div>
+    <div class="well">
+      <h4>JSON pipe operator ( | )</h4>
+      <div class="well">
+        <p ngNonBindable>Alias: {{person | json}}</p>
+      </div>
+      <div>
+        <button class="btn btn-default" (click)="addPerson()">Add person object</button>
+      </div>
+      <div>
+        <p>Alias: {{person | json}}</p>
+      </div>
+    </div>
+
+  </div>
+  <!--end-container-->
