@@ -9,7 +9,6 @@ app/**/*.js.map
 /typings
 
 # IDEs and editors
-/.vscode
 
 # misc
 
